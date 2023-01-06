@@ -17,7 +17,9 @@ resource "aws_s3_bucket" "bucket_1" {
 
   tags = {
     Name        = "logging"
-    Environment = "Dev"
+    Environment = "Dev-${var.bucket_name_1}"
+    owner       = local.owner
+    purpose     = local.purpose
   }
 }
 resource "aws_s3_bucket" "bucket_2" {
@@ -25,7 +27,9 @@ resource "aws_s3_bucket" "bucket_2" {
 
   tags = {
     Name        = "logging"
-    Environment = "Dev"
+    Environment = "Dev-${var.bucket_name_2}"
+    owner       = local.owner
+    purpose     = local.purpose
   }
 }
 resource "aws_s3_bucket" "bucket_3" {
@@ -33,7 +37,9 @@ resource "aws_s3_bucket" "bucket_3" {
 
   tags = {
     Name        = "logging"
-    Environment = "Dev"
+    Environment = "Dev-${var.bucket_name_3}"
+    owner       = local.owner
+    purpose     = local.purpose
   }
 }
 
@@ -112,8 +118,10 @@ module "versioning_bucket_1" {
 module "versioning_bucket_2" {
   source      = "./modules/s3-versioning"
   bucket_name = var.bucket_name_2
+  #  bucket_name = "${local.account_id}-var.bucket_name_2"
 }
 module "versioning_bucket_3" {
   source      = "./modules/s3-versioning"
   bucket_name = var.bucket_name_3
+  #  bucket_name = "${local.account_id}-var.bucket_name_3"
 }

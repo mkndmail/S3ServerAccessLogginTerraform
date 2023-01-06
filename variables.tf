@@ -6,10 +6,7 @@ variable "bucket_name_2" {
   type    = string
   default = "server-access-bucket-2"
 }
-variable "ap-south-2" {
-  type    = string
-  default = "us-east-1"
-}
+
 variable "bucket_name_3" {
   type    = string
   default = "server-access-bucket-3"
@@ -18,6 +15,12 @@ variable "bucket_name_3" {
 variable "target_bucket" {
   type    = string
   default = "mkndmail-log-bucket"
+}
+
+locals {
+  account_id = "746158423436"
+  owner      = "Mukund Gururani"
+  purpose    = "Server Access Logging Demo"
 }
 
 
